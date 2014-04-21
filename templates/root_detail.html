@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load mptt_tags %}
+
+{% block title %}Remember Valuable Ideas{% endblock %}
+
+{% block body_block %}
+
+<div class="panel panel-default">
+<div class="panel-body">
+    <b><a href="/mementos/{{random_m.pk}}">{{ random_m.title }}</a></b> <i>{{ random_m.source.title }}</i><br/>
+    {{ random_p|safe }}
+</div>
+</div>
+
+<ul class="root">
+    {% recursetree nodes %}
+        <li>
+            {{ node.title }}<br/>
+            {% for m in node.memento_set.all %}
+                <h4><b><a href="/mementos/{{m.pk}}">{{ m.title }}</a></b> <i>{{ m.source.title }}</i><br/>
+                <small>({{ m.type }}) {{ m.date_added }} <a href="/edit_memento/{{ m.pk }}/">Edit</a></small>
+                </h4>
+                <!--{{ m.text|safe }}<hr>-->
+            {% endfor %}
+            {% if not node.is_leaf_node %}
+                <ul class="children">
+                    {{ children }}
+                </ul>
+            {% endif %}
+        </li>
+    {% endrecursetree %}
+</ul>
+
+
+<!--{% for m in mementos %}-->
+    <!--<h4><b><a href="/mementos/{{m.pk}}">{{ m.title }}</a></b> <i>{{ m.source.title }}</i><br/>-->
+    <!--<small>({{ m.type }}) {{ m.date_added }} <a href="/edit_memento/{{ m.pk }}/">Edit</a></small>-->
+    <!--</h4>-->
+    <!--{{ m.text|safe }}<hr>-->
+<!--{% endfor %}-->
+
+{% endblock %}

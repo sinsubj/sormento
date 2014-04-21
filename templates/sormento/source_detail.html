@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}Remember Valuable Ideas{% endblock %}
+
+{% block body_block %}
+
+{% load static %}
+
+<h3>{{ source.title }}</h3>
+
+<div class="panel panel-default">
+{% if page_type == "root" %}
+    {% include 'sormento/root_detail.html' %}
+{% elif page_type == "node" %}
+    {% include 'sormento/node_detail.html' %}
+{% endif %}
+</div>
+
+{% endblock %}

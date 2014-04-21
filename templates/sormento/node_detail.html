@@ -1,0 +1,24 @@
+{% with object_list as node_list %}
+
+{% for node1, node1_list in node_list.items %}
+    {% if node1 == "mementos" %}
+        <div class="panel-body">
+        {% for memento in node1_list %}
+        <b><a href="/goto/?mem_pk={{ memento.pk }}">{{ memento.title }} ({{ memento.views }})</a></b><br>
+        {{ memento.text|safe }}<hr>
+        {% endfor %}
+        </div>
+    {% else %}
+        <div class="panel-heading"><h3 class="panel-title"><b>{{ node1.title }}</b></h3></div>
+        <div class="panel-body">
+        {% for node2, node2_list in node1_list.items %}
+            {% for memento in node2_list %}
+                <b><a href="/goto/?mem_pk={{ memento.pk }}">{{ memento.title }} ({{ memento.views }})</a></b><br>
+                {{ memento.text|safe }}<hr>
+            {% endfor %}
+        {% endfor %}
+        </div>
+    {% endif %}
+{% endfor %}
+
+{% endwith %}

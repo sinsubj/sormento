@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ memento.title }}{% endblock %}
+
+{% block body_block %}
+
+{% load static %}
+
+<h3>{{ memento.source }}</h3>
+<div class="panel panel-default">
+    <div class="panel-heading"><h3 class="panel-title"><b>{{ memento.title }} ({{ memento.views }})</b></h3></div>
+    <div class="panel-body">{{ memento.text|safe }}</div>
+</div>
+
+{% endblock %}

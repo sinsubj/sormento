@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Remember Valuable Ideas{% endblock %}
+
+{% block head_block %}<link href="{% static 'css/signin.css' %}" rel="stylesheet">{% endblock %}
+
+{% block body_block %}
+
+<div class="hero-unit">
+<form class="form-signin" id="login_form" method="post" action="/login/">
+    <h2 class="form-signin-heading">Please sign in</h2>
+    {% csrf_token %}
+    <input type="text" class="form-control" placeholder="Username" name="username" value="" size="50" />
+    <input type="password" class="form-control" placeholder="Password" name="password" value="" size="50" />
+    <br />
+    <button class="btn btn-primary btn-block" type="submit">Sign in</button>
+</form>
+</div>
+
+{% endblock %}

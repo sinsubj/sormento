@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% load static %}
+        
+{% block title %}Remember Valuable Ideas{% endblock %}
+
+{% block body_block %}
+    <h4><b>{{ m.title }}</b> <i>{{ m.source.title }}</i><br/>
+    <small>({{ m.type }}) {{ m.date_added }} <a href="/edit_memento/{{ m.pk }}/">Edit</a></small>
+    </h4>
+    {{ m.text|safe }}<hr>
+{% endblock %}

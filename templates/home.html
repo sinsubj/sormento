@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}Remember Valuable Ideas{% endblock %}
+
+{% block body_block %}
+
+{% load static %}
+
+<div class="jumbotron">
+    <h1>Sormento <small>sources and mementos</small></h1>
+    <p>Find, add, share, and remember valuable ideas.</p>
+    {% if not user.is_authenticated %}
+    <p><a href="/login/" class="btn btn-primary btn-lg" role="button">Log in</a></p>
+    {% else %}
+    <p><a href="/logout/" class="btn btn-primary btn-lg" role="button">Log out</a></p>
+    {% endif %}
+    <b><a href="/mementos/{{random_m.pk}}">{{ random_m.title }}</a></b> <i>{{ random_m.source.title }}</i><br/>
+    <small>{{ random_p|safe }}</small>
+</div>
+
+{% endblock %}
