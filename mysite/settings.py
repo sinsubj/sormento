@@ -75,7 +75,7 @@ DATABASES = {
         'USER': 'sinsub',
         'PASSWORD': 'sinsubpw',
         'HOST': '127.0.0.1',
-        'PORT': '5433',
+        'PORT': '5432',
     }
 }
 
@@ -97,11 +97,10 @@ DEFAULT_CHARSET = 'utf-8'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
-STATIC_ROOT = STATIC_PATH
 STATIC_URL = '/static/'
-# STATICFILES_DIRS = (
-#     STATIC_PATH,
-# )
+STATICFILES_DIRS = (
+     STATIC_PATH,
+)
 
 
 # Media files
